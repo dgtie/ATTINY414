@@ -1,4 +1,5 @@
-#Programmable IR Remote Controller
+# Programmable IR Remote Controller
+![](misc/remote.jpg)
 - 12 keys (1 shift-key + 11 ordinary keys)
 - 1 LED indicator
 - 1 IR photo-transistor
@@ -11,7 +12,7 @@
 - programmable through UART (upgrade firmware / upload lookup table)
 - SLEEP mode (sleeps when idle: LED off and not sending IR signals)
 
-#Key index
+# Key index
 |  IR LED | IR SENSOR  |  IR LED |
 | :------------: | :------------: | :------------: |
 |**(shift)**||LED|
@@ -20,9 +21,9 @@
 |  4 |  5 | 6  |
 | 7  | 8  |  9 |
 
-#Modes and Operation
+# Modes and Operation
 
-##CONTROL Mode
+## CONTROL Mode
 - click key#11 (shift-key) to toggle LED
 - LED will turn off when no key is pressed in 5 seconds
 - click other keys to send out IR signals. 22 signals supported.
@@ -30,7 +31,7 @@
 - hold key#7 and click key#10 to enter BOOTLOADER mode.
 - sleeps when idle
 
-##LEARN Mode
+## LEARN Mode
 - LED blinks slow
 - won't sleep
 - aim the remote to read close to the IR sensor (between the two IR LED)
@@ -38,11 +39,11 @@
 - zero space means time overflow
 - click any keys to return to CONTROL Mode. key clicked determines the device to use.
 
-##BOOTLOADER Mode
+## BOOTLOADER Mode
 - LED blinks fast
 - won't sleep
 
-#Device and Key Table
+# Device and Key Table
 
 |  0x8EC0 | #0  | #1  | #2  |  #3 | #4  | #5  |  #6 | #7  | #8  | #9  |#10|
 | :------------: | :------------: | :------------: | :------------: | :------------: | :------------: | :------------: | :------------: | :------------: | :------------: | :------------: |:-:|
