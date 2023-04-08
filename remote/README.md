@@ -47,11 +47,11 @@
 
 |  0x8EC0 | #0  | #1  | #2  |  #3 | #4  | #5  |  #6 | #7  | #8  | #9  |#10|
 | :------------: | :------------: | :------------: | :------------: | :------------: | :------------: | :------------: | :------------: | :------------: | :------------: | :------------: |:-:|
-| EXTENDED  | device#0 or device#8  |  device#1 or device#9  |  device#2 or device#10  | device#3 or device#11   | device#4  | device#5 |  device#6 | device#7  |
-| device#0  | ordinary  |||||||||||
+| EXTENDED  | device#0 or device#8  |  device#1 or device#9  |  device#2 or device#10  | device#3 or device#11   | device#4  | device#5 |  device#6 | device#7  |void|void|void|
+| device#0 0x8EC8  | ordinary  |||||||||||
 |   | shifted   |   |   |   |   |   |   |   |   ||
-|   | null-char | address | protocol low byte | protocol high byte |
-| device#1 | ordinary  |   |   |   |   |   |   |   |   |   ||
+|   | null-char | address | protocol low byte | protocol high byte |void|void|void|void|void|void|void|
+| device#1 0x8EE2 | ordinary  |   |   |   |   |   |   |   |   |   ||
 
 - Table starts at 0x8EC0
 - null-char is normally 0xff
