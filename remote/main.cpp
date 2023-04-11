@@ -9,7 +9,7 @@ bool LED_state(void);
 void ir_send(char);
 bool ir_sending(void);
 
-char device;
+char device, toggle;
 
 namespace
 {

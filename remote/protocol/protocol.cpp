@@ -1,11 +1,12 @@
+#define TOGGLE *((char*)0x3f77)
+#define DEVICE *((char*)0x3f78)
 #define EXTENDED ((unsigned char*)0x8ec0)
 
-extern const char device;
 
 static char *rc6_bits(char *p, char c) {
   const char bit2[] = { 0x58, 0x68, (char)0x98, (char)0xa8 };
   char d = c >> 6;
-  *p = bit2[d & 3];
+  *p++ = bit2[d & 3];
   d = c >> 4;
   *p++ = bit2[d & 3];
   d = c >> 2;
@@ -15,13 +16,12 @@ static char *rc6_bits(char *p, char c) {
 }
 
 void rc6(char *p, char a, char c) {
-  static char tr = 0xC8;
   *p++ = 93;		// 36 kHz
   *p++ = 16;		// 444 us
   *p++ = 0xFE;		// leader mark
   *p++ = 0x28;		// leader space + SB
   *p++ = 0x56;		// mode 0
-  *p++ = (tr ^= 0xF0);
+  *p++ = (TOGGLE ^= 1) ? 0xC8 : 0x38;
   p = rc6_bits(p, a);
   p = rc6_bits(p, c);
   *p++ = *p++ = 101;
@@ -40,7 +40,7 @@ void sony20(char *p, char a, char c) {
   *p++ = 24;
   *p++ = 0xF4;
   p = sony20_bits(p, (a << 7) | c | 0x1000);
-  p = sony20_bits(p, EXTENDED[device & 7] | 0x100);
+  p = sony20_bits(p, EXTENDED[DEVICE & 7] | 0x100);
   *p++ = 39;
   *p++ = 0x80;
   *p = 12;

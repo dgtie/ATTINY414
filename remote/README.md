@@ -53,6 +53,9 @@
 |   | null-char | address | protocol low byte | protocol high byte |void|void|void|void|void|void|void|
 | device#1 0x8EE2 | ordinary  |   |   |   |   |   |   |   |   |   ||
 
-- Table starts at 0x8EC0
+- Table starts from 0x8EC0 to 0x8FFF
 - null-char is normally 0xff
 
+# IR PROTOCOLS
+- built and uploaded separated from main codes
+- occupies memory 0xA00 to 0xEBF (code space)

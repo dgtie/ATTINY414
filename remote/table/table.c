@@ -9,9 +9,9 @@
 // SH 0   1   2   3   4   5   6   7   8   9   in
 //    nul adr protocol
 
-#define RC6 (void(*)(char*,char,char))(0x3A2>>1)
-#define SONY20 (void(*)(char*,char,char))(0x3E8>>1)
-#define NEC (void(*)(char*,char,char))(0x4C2>>1)
+#define RC6 (void(*)(char*,char,char))(0xAE4>>1)
+#define SONY20 (void(*)(char*,char,char))(0xB32>>1)
+#define NEC (void(*)(char*,char,char))(0xC0C>>1)
 
 const unsigned char extend[8] = { FF, 226, FF, FF, FF, FF, FF, FF };
 const struct Device devices[3] = {

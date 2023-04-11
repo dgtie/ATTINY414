@@ -28,6 +28,9 @@ void pinctrl(char c) {
   PORTA.PIN1CTRL = PORTA.PIN2CTRL = PORTA.PIN3CTRL = PORTA.PIN6CTRL = c;
 }
 
+const char key[] = { KEY_0, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6,
+                     KEY_7, KEY_8, KEY_9, KEY_POWER, KEY_SHIFT };
+
 } // anonymous
 
 char get_key(void) { return keys; }
@@ -60,9 +63,7 @@ ISR(PORTA_PORT_vect) {
 }
 
 char key_index(char c) {
-  const char keys[] = { KEY_0, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6,
-                        KEY_7, KEY_8, KEY_9, KEY_POWER, KEY_SHIFT };
   char i;
-  for (i = 0; i < sizeof(keys); i++) if (c == keys[i]) break;
+  for (i = 0; i < sizeof(key); i++) if (c == key[i]) break;
   return i;
 }
