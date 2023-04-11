@@ -9,8 +9,8 @@ static char *rc6_bits(char *p, char c) {
   d = c >> 4;
   *p++ = bit2[d & 3];
   d = c >> 2;
-  *pi++ = bit2[d & 3];
-  *pi++ = bit2[c & 3];
+  *p++ = bit2[d & 3];
+  *p++ = bit2[c & 3];
   return p;
 }
 
