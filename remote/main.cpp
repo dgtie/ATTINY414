@@ -43,7 +43,7 @@ int main(void) {
 
 void poll(unsigned char) {
   key_scan();
-  if (shift_count) if (!--shift_count) set_mode(LEARN);
+  if (shift_count) --shift_count;
   if (shift_on_count) if (!--shift_on_count) clear_LED();
   if ((mode == CONTROL) && !LED_state() && !ir_sending()) asm ("sleep");
 }
@@ -51,8 +51,13 @@ void poll(unsigned char) {
 void key_handler(char c) {
   if (c == (KEY_POWER | KEY_7)) sw_reset();
   if ((c == KEY_SHIFT) && (mode == CONTROL)) {
-    shift_count = 3572;				// 2 seconds
-    toggle_LED();
+    if (shift_count) {
+      shift_count = 0;
+      return set_mode(LEARN);
+    } else {
+      shift_count = 893;			// 0.5 seconds
+      toggle_LED();
+    }
   }
   if (LED_state()) shift_on_count = 8930;	// 5 seconds
   char i = key_index(c);
@@ -65,5 +70,4 @@ void key_handler(char c) {
     ir_send(i);
   }
   if (c) set_mode(CONTROL);
-  else shift_count = 0;
 }

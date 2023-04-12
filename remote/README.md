@@ -27,7 +27,7 @@
 - click key#11 (shift-key) to toggle LED
 - LED will turn off when no key is pressed in 5 seconds
 - click other keys to send out IR signals. 22 signals supported.
-- hold shift-key for 2 seconds to enter LEARN mode
+- double click shift-key to enter LEARN mode
 - hold key#7 and click key#10 to enter BOOTLOADER mode.
 - sleeps when idle
 
@@ -45,13 +45,14 @@
 
 # Device and Key Table
 
-|  0x8EC0 | #0  | #1  | #2  |  #3 | #4  | #5  |  #6 | #7  | #8  | #9  |#10|
-| :------------: | :------------: | :------------: | :------------: | :------------: | :------------: | :------------: | :------------: | :------------: | :------------: | :------------: |:-:|
-| EXTENDED  | device#0 or device#8  |  device#1 or device#9  |  device#2 or device#10  | device#3 or device#11   | device#4  | device#5 |  device#6 | device#7  |void|void|void|
-| device#0 0x8EC8  | ordinary  |||||||||||
-|   | shifted   |   |   |   |   |   |   |   |   ||
-|   | null-char | address | protocol low byte | protocol high byte |void|void|void|void|void|void|void|
-| device#1 0x8EE2 | ordinary  |   |   |   |   |   |   |   |   |   ||
+<table style='text-align:center'>
+<tr><th></th><th>#0</th><th>#1</th><th>#2</th><th>#3</th><th>#4</th><th>#5</th><th>#6</th><th>#7</th><th>#8</th><th>#9</th><th>#10</th></tr>
+<tr><td>EXTENDED 0x8EC0</td><td>device#0 or device#8</td><td>device#1 or device#9</td><td>device#2 or device#10</td><td>device#3 or device#11</td><td>device#4</td><td>device#5</td><td>device#6</td><td>device#7</td></tr>
+<tr><td>device#0 0x8EC8</td><td colspan=11>ordinary keys</td></tr>
+<tr><td /><td colspan=11>shifted keys</td></tr>
+<tr><td /><td>null-char</td><td>address</td><td colspan=2>protocol</td></tr>
+<tr><td>device#1 0x8EE2</td><td colspan=11>ordinary keys</td></tr>
+</table>
 
 - Table starts from 0x8EC0 to 0x8FFF
 - null-char is normally 0xff
